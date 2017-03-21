@@ -9,10 +9,6 @@ class ObservablePool extends Subject {
     this.ItemConstructor = ItemConstructor;
   }
 
-  get(filter) {
-    return this._findItem(filter) || this._createItem();
-  }
-
   _findItem(filter) {
     let items = this.items;
     for (let i = 0; i < items.length; i++) {
@@ -44,6 +40,10 @@ class ObservablePool extends Subject {
 
     items.push(item);
     return item;
+  }
+
+  get(filter) {
+    return this._findItem(filter) || this._createItem();
   }
 
   complete() {
