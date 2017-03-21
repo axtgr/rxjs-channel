@@ -44,6 +44,7 @@ class Channel extends Subject {
     let rendezvous = this.pool.get(r => !r.putOp);
     rendezvous.setOp('put', op);
     rendezvous.setValue(value);
+    this.next(value);
     return rendezvous;
   }
 
@@ -68,6 +69,7 @@ class Channel extends Subject {
       let rendezvous = this.pool.get(r => !r.putOp);
       rendezvous.setOp('put', op);
       rendezvous.setValue(value);
+      this.next(value);
     });
 
     return this._findMatch(op);
