@@ -1,7 +1,13 @@
 {
   "name": "rxjs-channel",
   "version": "0.1.0",
-  "description": "",
+  "description": "CSP channels for RxJS",
+  "keywords": [
+    "rxjs",
+    "rx",
+    "csp",
+    "channel"
+  ],
   "main": "src/index.js",
   "repository": {
     "type": "git",
