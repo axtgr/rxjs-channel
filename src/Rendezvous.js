@@ -10,7 +10,7 @@ class Rendezvous extends ReplaySubject {
   }
 
   checkResolve() {
-    if (!this.isResolved && this.putOp && this.takeOp && this.hasValue) {
+    if (!this.isResolved && this.put && this.consume && this.hasValue) {
       this.isResolved = true;
       this.next(this.value);
       this.complete();
@@ -19,16 +19,16 @@ class Rendezvous extends ReplaySubject {
 
   setOp(kind, op) {
     if (this.isResolved) {
-      throw new Error('Cannot set an op on a resolved match');
+      throw new Error('Cannot set an op on a resolved rendezvous');
     }
 
-    this[kind + 'Op'] = op;
+    this[kind] = op;
     this.checkResolve();
   }
 
   setValue(value) {
     if (this.isResolved) {
-      throw new Error('Cannot set a value on a resolved match');
+      throw new Error('Cannot set a value on a resolved rendezvous');
     }
 
     this.value = value;

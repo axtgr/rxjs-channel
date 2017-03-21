@@ -12,7 +12,7 @@ class Channel extends Subject {
 
   _findMatch(op) {
     let match = this.pool
-      .filter(r => r.putOp === op || r.takeOp === op)
+      .filter(r => r.put === op || r.consume === op)
       .zip(op, r => r.value)
       .takeLast(1);
     let result = new ReplaySubject(1);
@@ -20,7 +20,7 @@ class Channel extends Subject {
     return result;
   }
 
-  take() {
+  consume() {
     if (this.hasError) {
       return Observable.throw(this.thrownError);
     } else if (this.isStopped) {
@@ -28,8 +28,8 @@ class Channel extends Subject {
     }
 
     let op = {};
-    let rendezvous = this.pool.get(r => !r.takeOp);
-    rendezvous.setOp('take', op);
+    let rendezvous = this.pool.get(r => !r.consume);
+    rendezvous.setOp('consume', op);
     return rendezvous;
   }
 
@@ -41,7 +41,7 @@ class Channel extends Subject {
     }
 
     let op = {};
-    let rendezvous = this.pool.get(r => !r.putOp);
+    let rendezvous = this.pool.get(r => !r.put);
     rendezvous.setOp('put', op);
     rendezvous.setValue(value);
     super.next(value);
@@ -70,7 +70,7 @@ class Channel extends Subject {
     }
 
     op.subscribe(value => {
-      let rendezvous = this.pool.get(r => !r.putOp);
+      let rendezvous = this.pool.get(r => !r.put);
       rendezvous.setOp('put', op);
       rendezvous.setValue(value);
       super.next(value);
