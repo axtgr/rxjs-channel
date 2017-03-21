@@ -1,0 +1,19 @@
+{
+  "name": "rxjs-channel",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-shnayder/rxjs-channel.git"
+  },
+  "author": "Alex Shnayder <alex@shnayder.pro>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alex-shnayder/rxjs-channel/issues"
+  },
+  "homepage": "https://github.com/alex-shnayder/rxjs-channel#readme",
+  "peerDependencies": {
+    "rxjs": "^5.0.0"
+  }
+}
