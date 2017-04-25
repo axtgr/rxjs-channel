@@ -1,70 +1,70 @@
-const { Subject } = require('rxjs');
+const { Subject } = require('rxjs')
 
-
-module.exports =
 class ObservablePool extends Subject {
   constructor(ItemConstructor) {
-    super();
-    this.items = [];
-    this.ItemConstructor = ItemConstructor;
+    super()
+    this.items = []
+    this.ItemConstructor = ItemConstructor
   }
 
   _findItem(filter) {
-    let items = this.items;
+    let items = this.items
     for (let i = 0; i < items.length; i++) {
       if (filter(items[i])) {
-        return items[i];
+        return items[i]
       }
     }
   }
 
   _createItem() {
-    let item = new this.ItemConstructor();
-    let items = this.items;
+    let item = new this.ItemConstructor()
+    let items = this.items
 
     let subscription = item.subscribe({
       complete: () => {
-        subscription.unsubscribe();
+        subscription.unsubscribe()
 
         if (!this.isStopped) {
           for (let i = 0; i < items.length; i++) {
             if (items[i] === item) {
-              items.splice(i, 1);
-              break;
+              items.splice(i, 1)
+              break
             }
           }
-          this.next(item);
+          this.next(item)
         }
-      }
-    });
+      },
+    })
 
-    items.push(item);
-    return item;
+    items.push(item)
+    return item
   }
 
   get(filter) {
-    return this._findItem(filter) || this._createItem();
+    return this._findItem(filter) || this._createItem()
   }
 
   complete() {
     if (this.isStopped) {
-      return;
+      return
     }
 
-    super.complete();
-    this.items.forEach(item => item.complete());
-    this.items = null;
-    this.ItemConstructor = null;
+    super.complete()
+    this.items.forEach((item) => item.complete())
+    this.items = null
+    this.ItemConstructor = null
   }
 
   error(err) {
     if (this.isStopped) {
-      return;
+      return
     }
 
-    super.error(err);
-    this.items.forEach(item => item.error(err));
-    this.items = null;
-    this.ItemConstructor = null;
+    super.error(err)
+    this.items.forEach((item) => item.error(err))
+    this.items = null
+    this.ItemConstructor = null
   }
-};
+}
+
+module.exports = ObservablePool

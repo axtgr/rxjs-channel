@@ -1,1 +1,1 @@
-module.exports.Channel = require('./Channel');
+module.exports.Channel = require('./Channel')
