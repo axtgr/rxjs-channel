@@ -6,7 +6,7 @@
   "repository": "alex-shnayder/rxjs-channel",
   "homepage": "https://github.com/alex-shnayder/rxjs-channel#readme",
   "bugs": "https://github.com/alex-shnayder/rxjs-channel/issues",
-  "license": "MIT",
+  "license": "ISC",
   "keywords": [
     "rxjs",
     "rx",
