@@ -2,6 +2,11 @@
   "name": "rxjs-channel",
   "version": "0.2.0",
   "description": "CSP channels for RxJS",
+  "author": "Alex Shnayder <alex@shnayder.pro>",
+  "repository": "alex-shnayder/rxjs-channel",
+  "homepage": "https://github.com/alex-shnayder/rxjs-channel#readme",
+  "bugs": "https://github.com/alex-shnayder/rxjs-channel/issues",
+  "license": "MIT",
   "keywords": [
     "rxjs",
     "rx",
@@ -19,16 +24,6 @@
     ]
   },
   "main": "src/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alex-shnayder/rxjs-channel.git"
-  },
-  "author": "Alex Shnayder <alex@shnayder.pro>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/alex-shnayder/rxjs-channel/issues"
-  },
-  "homepage": "https://github.com/alex-shnayder/rxjs-channel#readme",
   "peerDependencies": {
     "rxjs": "^5.0.0"
   },
