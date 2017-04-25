@@ -1,6 +1,6 @@
 {
   "name": "rxjs-channel",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "CSP channels for RxJS",
   "author": "Alex Shnayder <alex@shnayder.pro>",
   "repository": "alex-shnayder/rxjs-channel",
